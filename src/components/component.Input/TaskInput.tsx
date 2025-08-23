@@ -36,4 +36,6 @@ export function TaskInput({ onAddTask }: TaskInputProps) {
       <button onClick={handleAddTask}>Adicionar</button>
     </div>
   );
+
+  
 }

@@ -1,46 +1,56 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { TaskInput } from "./components/component.Input/TaskInput";
+import TaskItem from "./components/component.TaskItem/TaskItem";
+import { type Task } from "./components/component.TaskItem/types";
 
 function App() {
-  //Mostra o que será adicionado
-  const [taskInput, setTaskInput] = useState("")
-  //Lista com as tarefas adicionadas
-  const [tasks, setTasks] = useState<string[]>([]) 
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-  function handleAddTask() {
-    if (taskInput.trim() === "") return
-    //Coloca na lista
-    setTasks([...tasks, taskInput]) 
-    setTaskInput("")
+  function handleAddTask(title: string) {
+    const newTask: Task = {
+      id: crypto.randomUUID(),
+      title,
+      category: "Geral", // por enquanto fixo
+      completed: false,
+    };
+    setTasks((prev) => [...prev, newTask]);
+  }
+
+  function handleToggle(id: string) {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }
+
+  function handleDelete(id: string) {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
   }
 
   return (
     <div className="App">
       <h1>Minhas Tarefas</h1>
 
-      {}
-      <input
-        type="text"
-        value={taskInput}
-        onChange={(e) => setTaskInput(e.target.value)}
-        placeholder="Digite uma tarefa..."
-      />
+      {/* Input controlado */}
+      <TaskInput onAddTask={handleAddTask} />
 
-      <button onClick={handleAddTask}>Adicionar</button>
-
-      {}
-      <h2>Última tarefa digitada:</h2>
-      <p>{taskInput}</p>
-
-      {}
       <h2>Lista de Tarefas</h2>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
+      <div>
+        {tasks.length === 0 && <p>Nenhuma tarefa adicionada ainda.</p>}
+
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+          />
         ))}
-      </ul>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
