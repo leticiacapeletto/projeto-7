@@ -1,34 +1,45 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  //Mostra o que será adicionado
+  const [taskInput, setTaskInput] = useState("")
+  //Lista com as tarefas adicionadas
+  const [tasks, setTasks] = useState<string[]>([]) 
+
+  function handleAddTask() {
+    if (taskInput.trim() === "") return
+    //Coloca na lista
+    setTasks([...tasks, taskInput]) 
+    setTaskInput("")
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App">
+      <h1>Minhas Tarefas</h1>
+
+      {}
+      <input
+        type="text"
+        value={taskInput}
+        onChange={(e) => setTaskInput(e.target.value)}
+        placeholder="Digite uma tarefa..."
+      />
+
+      <button onClick={handleAddTask}>Adicionar</button>
+
+      {}
+      <h2>Última tarefa digitada:</h2>
+      <p>{taskInput}</p>
+
+      {}
+      <h2>Lista de Tarefas</h2>
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>{task}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
