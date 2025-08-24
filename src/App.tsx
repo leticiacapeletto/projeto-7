@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import { TaskInput } from "./components/component.Input/TaskInput";
 import TaskItem from "./components/component.TaskItem/TaskItem";
 import { type Task } from "./components/component.TaskItem/types";
@@ -30,15 +30,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Minhas Tarefas</h1>
+    <div className={styles.App}>
+      <h1 className={styles.tituloTarefa}>📝 Suas Tarefas Personalizadas</h1>
+      <p>Adicione suas próprias tarefas de estudo</p>
 
       {/* Input controlado */}
       <TaskInput onAddTask={handleAddTask} />
 
-      <h2>Lista de Tarefas</h2>
       <div>
-        {tasks.length === 0 && <p>Nenhuma tarefa adicionada ainda.</p>}
+        {tasks.length === 0 && <p className={styles.paragrafoAdd}>Adicione suas tarefas personalizadas acima. Você pode arrastá-las para qualquer semana! 🎯</p>}
 
         {tasks.map((task) => (
           <TaskItem

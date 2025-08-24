@@ -19,7 +19,7 @@ export default function TaskItem({ task, onToggle, onDelete }: props) {
         <span>{task.title}</span>
         <span>({task.category})</span>
 
-        <button onClick={() => onDelete(task.id)}>Excluir</button>
+        <button className={styles.buttonExcluir} onClick={() => onDelete(task.id)}>Excluir</button>
       </div>
     </>
   );
