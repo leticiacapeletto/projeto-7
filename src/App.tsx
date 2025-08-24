@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import { TaskInput } from "./components/component.Input/TaskInput";
-import TaskItem from "./components/component.TaskItem/TaskItem";
-import { type Task } from "./components/component.TaskItem/types";
+import { TaskList } from "./components/component.TaskList/TaskList"; // <-- novo
+import { type Task } from "../types";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -11,7 +11,7 @@ function App() {
     const newTask: Task = {
       id: crypto.randomUUID(),
       title,
-      category: "Geral", // por enquanto fixo
+      category: "Geral",
       completed: false,
     };
     setTasks((prev) => [...prev, newTask]);
@@ -33,22 +33,14 @@ function App() {
     <div className="App">
       <h1>Minhas Tarefas</h1>
 
-      {/* Input controlado */}
       <TaskInput onAddTask={handleAddTask} />
 
-      <h2>Lista de Tarefas</h2>
-      <div>
-        {tasks.length === 0 && <p>Nenhuma tarefa adicionada ainda.</p>}
-
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
-        ))}
-      </div>
+      {/* Aqui usamos o TaskList */}
+      <TaskList
+        tasks={tasks}
+        onToggle={handleToggle}
+        onDelete={handleDelete}
+      />
     </div>
   );
 }
