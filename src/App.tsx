@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import { TaskInput } from "./components/component.Input/TaskInput";
-import { TaskList } from "./components/component.TaskList/TaskList"; // <-- novo
+import { TaskList } from "./components/component.TaskList/TaskList";
+import { TaskCounter } from "./components/component.TaskCounter/TaskCount";
 import { type Task } from "../types";
 
-function App() {
+export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   function handleAddTask(title: string) {
@@ -35,23 +36,8 @@ function App() {
       <p>Adicione suas próprias tarefas de estudo</p>
 
       <TaskInput onAddTask={handleAddTask} />
-
-      <h2>Lista de Tarefas</h2>
-      <div>
-         {tasks.length === 0 && <p className={styles.paragrafoAdd}>Adicione suas tarefas personalizadas acima. Você pode arrastá-las para qualquer semana! 🎯</p>}
-
-
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
-        ))}
-      </div>
+      <TaskCounter tasks={tasks} />
+      <TaskList tasks={tasks} onToggle={handleToggle} onDelete={handleDelete} />
     </div>
   );
 }
-
-export default App;
