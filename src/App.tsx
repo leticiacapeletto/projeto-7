@@ -36,8 +36,9 @@ export default function App() {
       <p>Adicione suas próprias tarefas de estudo</p>
 
       <TaskInput onAddTask={handleAddTask} />
-      <TaskCounter tasks={tasks} />
       <TaskList tasks={tasks} onToggle={handleToggle} onDelete={handleDelete} />
+      <div className={styles.separador}></div>
+      <TaskCounter tasks={tasks} />
     </div>
   );
 }
