@@ -9,20 +9,17 @@ type props = {
 
 export default function TaskItem({ task, onToggle, onDelete }: props) {
   return (
-    <>
-      <div className={styles.container}>
-        <input
-          type="checkbox"
-          checked={task.completed}
-          onChange={() => onToggle(task.id)}
-        />
-        <span>{task.title}</span>
-        <span>({task.category})</span>
+    <div className={styles.container}>
+      <input
+        type="checkbox"
+        checked={task.completed}
+        onChange={() => onToggle(task.id)}
+      />
+      <span>{task.title}</span>
 
-        <button className={styles.buttonExcluir} onClick={() => onDelete(task.id)}>
-          🗑️
-        </button>
-      </div>
-    </>
+      <button className={styles.buttonExcluir} onClick={() => onDelete(task.id)}>
+        🗑️
+      </button>
+    </div>
   );
 }
