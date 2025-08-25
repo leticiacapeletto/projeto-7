@@ -34,10 +34,9 @@ export default function App() {
 
   return (
     <>
-      {/* Aqui usamos o COMPONENTE Header */}
       <Header />
-      <ProgressTracker />
-      
+      <ProgressTracker total={16} concluidas={6} />
+
       <div className={styles.App}>
         <h1 className={styles.tituloTarefa}>📝 Suas Tarefas Personalizadas</h1>
         <p>Adicione suas próprias tarefas de estudo</p>

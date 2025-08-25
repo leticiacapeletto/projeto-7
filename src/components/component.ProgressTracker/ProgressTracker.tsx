@@ -1,55 +1,63 @@
 import styles from "./ProgressTracker.module.css";
 
-export function ProgressTracker() {
+interface ProgressTrackerProps {
+  total: number;
+  concluidas: number;
+}
+
+export function ProgressTracker({ total, concluidas }: ProgressTrackerProps) {
+  const progresso = total > 0 ? Math.round((concluidas / total) * 100) : 0;
+
+  const etapas = [
+    { id: 1, label: "Fundamentos", sub: "HTML/CSS/JS" },
+    { id: 2, label: "Backend", sub: "Node.js" },
+    { id: 3, label: "Frontend", sub: "React" },
+    { id: 4, label: "Avançado", sub: "Nest.js" },
+  ];
+
   return (
     <div className={styles.trackerContainer}>
       <div className={styles.header}>
         <h2>📊 Progresso Geral do Curso</h2>
       </div>
-      <p className={styles.percentage}>0% concluído</p>
 
-      {/* Seção da linha do tempo/roadmap */}
+      <p className={styles.percentage}>{progresso}% concluído</p>
+
+      {/* Linha do tempo dinâmica */}
       <div className={styles.roadmap}>
-        <div className={styles.step}>
-          <div className={`${styles.circle} ${styles.filled}`}>1</div>
-          <span className={styles.label}>Fundamentos</span>
-          <span className={styles.sublabel}>HTML/CSS/JS</span>
-        </div>
-        
-        {/* Adicione a linha de progresso preenchida aqui */}
-        <div className={`${styles.line} ${styles.filled}`}></div>
+        {/* Linha contínua de fundo */}
+        <div className={`${styles.line} ${progresso > 0 ? styles.filled : ""}`}></div>
 
-        <div className={styles.step}>
-          <div className={styles.circle}>2</div>
-          <span className={styles.label}>Backend</span>
-          <span className={styles.sublabel}>Node.js</span>
-        </div>
-        <div className={styles.line}></div>
-        <div className={styles.step}>
-          <div className={styles.circle}>3</div>
-          <span className={styles.label}>Frontend</span>
-          <span className={styles.sublabel}>React</span>
-        </div>
-        <div className={styles.line}></div>
-        <div className={styles.step}>
-          <div className={styles.circle}>4</div>
-          <span className={styles.label}>Avançado</span>
-          <span className={styles.sublabel}>Nest.js</span>
-        </div>
+        {etapas.map((etapa, index) => (
+          <div key={etapa.id} className={styles.step}>
+            <div
+              className={`${styles.circle} ${progresso >= ((index + 1) / etapas.length) * 100
+                  ? styles.filled
+                  : ""
+                }`}
+            >
+              {etapa.id}
+            </div>
+            <span className={styles.label}>{etapa.label}</span>
+            <span className={styles.sublabel}>{etapa.sub}</span>
+          </div>
+        ))}
       </div>
 
-      {/* Seção dos contadores na parte inferior */}
+      <div className={styles.separador}></div>
+
+      {/* Contadores inferiores */}
       <div className={styles.counters}>
         <div className={styles.counterBlock}>
-          <span className={styles.counterNumber}>16</span>
+          <span className={styles.counterNumber}>{total}</span>
           <span className={styles.counterLabel}>Total de Tarefas</span>
         </div>
         <div className={styles.counterBlock}>
-          <span className={styles.counterNumber}>0</span>
+          <span className={styles.counterNumber}>{concluidas}</span>
           <span className={styles.counterLabel}>Concluídas</span>
         </div>
         <div className={styles.counterBlock}>
-          <span className={styles.counterNumber}>0%</span>
+          <span className={styles.counterNumber}>{progresso}%</span>
           <span className={styles.counterLabel}>Progresso Médio</span>
         </div>
       </div>
