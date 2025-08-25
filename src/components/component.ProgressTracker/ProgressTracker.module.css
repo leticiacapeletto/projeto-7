@@ -1,0 +1,68 @@
+.trackerContainer {
+  background: white;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 70%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.roadmap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #ccc;
+  margin: 0 10px;
+  transition: all 0.3s ease; /* Adicionamos uma transição suave */
+}
+
+/* Quando a linha estiver preenchida */
+.line.filled {
+  background-color: #7B47C5; /* Cor roxa para a linha preenchida */
+}
+
+.counters {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ccc; /* Aumentamos a espessura da borda para 2px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #ccc;
+  transition: all 0.3s ease; /* Adicionamos uma transição suave */
+}
+
+/* Quando o círculo estiver preenchido */
+.circle.filled {
+  border-color: #7B47C5; /* Borda roxa para o círculo preenchido */
+  background-color: #7B47C5; /* Fundo roxo para o círculo preenchido */
+  color: white; /* Cor do número dentro do círculo */
+}
