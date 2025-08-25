@@ -1,5 +1,5 @@
 import styles from "./TaskItem.module.css";
-import { type Task } from "./types";
+import { type Task } from "../../../types";
 
 type props = {
   task: Task;
