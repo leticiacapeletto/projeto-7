@@ -7,12 +7,15 @@
   color: white;
 }
 
+
 .header h1 {
   font-size: 1.8rem;
   margin-bottom: 6px;
   color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .header p {
   font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }

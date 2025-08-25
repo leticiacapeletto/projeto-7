@@ -3,7 +3,7 @@
   margin: 30px auto;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(71, 1, 85, 0.479);
   text-align: center;
   max-width: 70%;
 }
@@ -13,56 +13,113 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  color: #1f1d1dd7;
+}
+
+.percentage {
+  font-size: 14px;
+  color: #333333c2;
+  margin-top: 7px;
 }
 
 .roadmap {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-top: 2rem;
+  align-items: center;
+  margin: 2rem 0 1rem;
+}
+
+.line {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: #ccc;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+
+.line.filled {
+  background: linear-gradient(90deg, #6c63ff, #7B47C5);
+}
+
+.line.filled:hover {
+  background: linear-gradient(90deg, #7B47C5, #6c63ff);
 }
 
 .step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.3s, color 0.3s;
+
+}
+
+.circle.filled {
+  border-color: #6c63ff;
+  color: #6c63ff;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333333c2;
+  margin-top: 8px;
+}
+
+.sublabel {
+  font-size: 10px;
+  color: #666;
+}
+
+.separador {
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc6b;
+  margin: 1.5rem 0;
+}
+
+.counters {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 25px;
+}
+
+.counterBlock {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.line {
-  flex-grow: 1;
-  height: 2px;
-  background-color: #ccc;
-  margin: 0 10px;
-  transition: all 0.3s ease; /* Adicionamos uma transição suave */
-}
-
-/* Quando a linha estiver preenchida */
-.line.filled {
-  background-color: #7B47C5; /* Cor roxa para a linha preenchida */
-}
-
-.counters {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 2rem;
-}
-
-.circle {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid #ccc; /* Aumentamos a espessura da borda para 2px */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.counterNumber {
+  font-size: 20px;
   font-weight: bold;
-  color: #ccc;
-  transition: all 0.3s ease; /* Adicionamos uma transição suave */
+  color: #2a5bd7;
 }
 
-/* Quando o círculo estiver preenchido */
-.circle.filled {
-  border-color: #7B47C5; /* Borda roxa para o círculo preenchido */
-  background-color: #7B47C5; /* Fundo roxo para o círculo preenchido */
-  color: white; /* Cor do número dentro do círculo */
+.counterLabel {
+  font-size: 12px;
+  color: #333;
 }
