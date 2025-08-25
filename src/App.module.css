@@ -12,26 +12,33 @@ body {
 
 .App {
   background: white;
-  margin: 30px;
+  margin: 30px auto; 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(71, 1, 85, 0.479);
-  text-align: center;
-  display: flexbox;
-  max-width: 95%;
+  display: flex; 
+  flex-direction: column; 
+  max-width: 70%;
+  
+ 
 }
 
 .tituloTarefa{
 font-size: 1.8rem;
-margin-bottom: 3px;
+margin-bottom: 6px;
+color: rgba(0, 0, 0, 0.74);
+text-align: center;
 }
 
 p{
   font-weight:500 ;
+  text-align: center;
 }
-.paragrafoAdd{
-  font-size: 0.8rem;
-  font-style: italic;
-  color: rgb(109, 108, 108);
-  margin-top: 35px;
+
+
+.separador {
+  width: 95%;
+  height: 1px;
+  background-color: #ccccccc7;
+  margin: 2rem auto 1rem; 
 }

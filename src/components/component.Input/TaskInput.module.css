@@ -9,9 +9,15 @@
 .inputTarefa {
   flex-grow: 1;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccccccd5;
   border-radius: 8px;
   margin-top: 18px;
+}
+
+.inputTarefa:focus {
+  outline: none; 
+  border-color: #ae7ff0e3; 
+  box-shadow: 0 0 0 1px #7B47C5; 
 }
 
 .addButton {
@@ -20,7 +26,7 @@
   font-weight: 600;
   padding: 0.9rem 1.2rem;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin-top: 1rem;
