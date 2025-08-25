@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import styles from "./TaskInput.module.css";
 interface TaskInputProps {
   onAddTask: (task: string) => void;
 }
@@ -25,15 +25,16 @@ export function TaskInput({ onAddTask }: TaskInputProps) {
   }
 
   return (
-    <div>
-      <input
+    <div className={styles.containerTarefa}>
+      <input 
+      className={styles.inputTarefa}
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyPress}
-        placeholder="Digite uma nova tarefa"
+        placeholder="Digite uma nova tarefa..."
       />
-      <button onClick={handleAddTask}>Adicionar</button>
+      <button className={styles.addButton} onClick={handleAddTask}>Adicionar</button>
     </div>
   );
 

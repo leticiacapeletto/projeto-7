@@ -1,0 +1,63 @@
+.containerTarefa {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.inputTarefa {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 18px;
+}
+
+.addButton {
+  background: linear-gradient(135deg, #9f17f3, #6502a3);
+  color: white;
+  font-weight: 600;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+
+.addButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.4s ease;
+}
+
+.addButton:hover::before {
+  left: 100%;
+}
+
+.addButton:hover {
+  background: linear-gradient(135deg, #6502a3, #9f17f3);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.addButton:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.addButton:focus-visible {
+  outline: 2px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(212, 6, 150, 0.3);
+}

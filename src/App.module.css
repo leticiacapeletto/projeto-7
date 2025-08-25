@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #9f17f3;
+}
+
+.App {
+  background: white;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(71, 1, 85, 0.479);
+  text-align: center;
+  display: flexbox;
+  max-width: 95%;
+}
+
+.tituloTarefa{
+font-size: 1.8rem;
+margin-bottom: 3px;
+}
+
+p{
+  font-weight:500 ;
+}
+.paragrafoAdd{
+  font-size: 0.8rem;
+  font-style: italic;
+  color: rgb(109, 108, 108);
+  margin-top: 35px;
+}
