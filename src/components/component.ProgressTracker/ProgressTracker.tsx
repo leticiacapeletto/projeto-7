@@ -6,7 +6,7 @@ interface ProgressTrackerProps {
 }
 
 export function ProgressTracker({ total, concluidas }: ProgressTrackerProps) {
-  const progresso = total > 0 ? Math.round((concluidas / total) * 100) : 0;
+  const progresso = total > 0 ? (concluidas / total) * 100 : 0;
 
   const etapas = [
     { id: 1, label: "Fundamentos", sub: "HTML/CSS/JS" },
@@ -21,32 +21,36 @@ export function ProgressTracker({ total, concluidas }: ProgressTrackerProps) {
         <h2>📊 Progresso Geral do Curso</h2>
       </div>
 
-      <p className={styles.percentage}>{progresso}% concluído</p>
+      <p className={styles.percentage}>{Math.round(progresso)}% concluído</p>
 
-      {/* Linha do tempo dinâmica */}
       <div className={styles.roadmap}>
-        {/* Linha contínua de fundo */}
-        <div className={`${styles.line} ${progresso > 0 ? styles.filled : ""}`}></div>
+  {/* Linha de fundo fixa */}
+  <div className={styles.line}></div>
 
-        {etapas.map((etapa, index) => (
-          <div key={etapa.id} className={styles.step}>
-            <div
-              className={`${styles.circle} ${progresso >= ((index + 1) / etapas.length) * 100
-                  ? styles.filled
-                  : ""
-                }`}
-            >
-              {etapa.id}
-            </div>
-            <span className={styles.label}>{etapa.label}</span>
-            <span className={styles.sublabel}>{etapa.sub}</span>
-          </div>
-        ))}
+  {/* Barra colorida preenchendo */}
+  <div
+    className={styles.lineFill}
+    style={{ width: `${progresso}%` }}
+  ></div>
+
+  {etapas.map((etapa, index) => (
+    <div key={etapa.id} className={styles.step}>
+      <div
+        className={`${styles.circle} ${
+          index < concluidas ? styles.filled : ""
+        }`}
+      >
+        {etapa.id}
       </div>
+      <span className={styles.label}>{etapa.label}</span>
+      <span className={styles.sublabel}>{etapa.sub}</span>
+    </div>
+  ))}
+</div>
+
 
       <div className={styles.separador}></div>
 
-      {/* Contadores inferiores */}
       <div className={styles.counters}>
         <div className={styles.counterBlock}>
           <span className={styles.counterNumber}>{total}</span>
@@ -57,7 +61,7 @@ export function ProgressTracker({ total, concluidas }: ProgressTrackerProps) {
           <span className={styles.counterLabel}>Concluídas</span>
         </div>
         <div className={styles.counterBlock}>
-          <span className={styles.counterNumber}>{progresso}%</span>
+          <span className={styles.counterNumber}>{Math.round(progresso)}%</span>
           <span className={styles.counterLabel}>Progresso Médio</span>
         </div>
       </div>

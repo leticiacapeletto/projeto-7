@@ -67,3 +67,18 @@
   outline: 2px solid var(--accent);
   box-shadow: 0 0 0 3px rgba(212, 6, 150, 0.3);
 }
+
+.selectCategory {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+}
+
+.optionCategory {
+  background: white;
+  color: #333;
+}
