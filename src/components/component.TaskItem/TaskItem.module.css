@@ -16,7 +16,7 @@
 }
 
 .buttonExcluir {
-  background: #ee3203d7;
+  background: #7517b4d7;
   color: white;
   font-weight: 600;
   padding: 0.6rem 0.8rem;
@@ -47,7 +47,7 @@
 }
 
 .buttonExcluir:hover {
-  background: linear-gradient(135deg, #fa4e23d7, #ee3203d7);
+  background: linear-gradient(135deg, #7517b4d7, #5a0592d7);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
