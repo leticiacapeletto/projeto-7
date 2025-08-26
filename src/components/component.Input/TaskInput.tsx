@@ -18,7 +18,7 @@ export function TaskInput({ onAddTask }: TaskInputProps) {
 
     if (!trimmed) return;
 
-    // Passa o título e a categoria para a função do componente pai (App)
+    
     onAddTask(trimmed, category);
     setText("");
   }

@@ -25,7 +25,7 @@
 .progressBar {
   width: 100%;
   height: 8px;
-  background: #eee; /* cor neutra */
+  background: #eee;
   border-radius: 4px;
   overflow: hidden;
   margin: 10px 0;
@@ -36,12 +36,11 @@
 .progressFill {
   height: 100%;
   background: linear-gradient(90deg, #6c63ff, #7B47C5);
-  width: 0; /* aqui será controlado pelo React via style */
+  width: 0;
   border-radius: 4px;
   transition: width 0.4s ease, background 0.3s ease;
 }
 
-/* Hover levemente mais intenso */
 .progressBar:hover .progressFill {
   background: linear-gradient(90deg, #7B47C5, #6c63ff);
 }
@@ -57,4 +56,30 @@
 
 .checkbox input {
   accent-color: #6c63ff;
+}
+
+/* NOVO: container dos items com rolagem */
+.taskCardBody {
+  max-height: 210px;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* scroll mais suave */
+.taskCardBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.taskCardBody::-webkit-scrollbar-thumb {
+  background: #7B47C5;
+  border-radius: 3px;
+}
+
+.taskCardBody::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
 }
