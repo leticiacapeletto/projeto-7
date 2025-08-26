@@ -30,15 +30,15 @@
   margin: 2rem 0 1rem;
 }
 
-/* ProgressTracker.module.css */
+
 /* Linha de fundo da barra - cinza claro */
 .line {
   height: 8px;
-  background: #eee; /* fundo cinza claro */
+  background: #eee;
   position: absolute;
   top: 50%;
   left: 0;
-  width: 100%; /* sempre ocupar 100% do container */
+  width: 100%;
   transform: translateY(-50%);
   border-radius: 4px;
   z-index: 0;
@@ -47,7 +47,7 @@
 /* Barra colorida preenchendo */
 .lineFill {
   height: 8px;
-  background: linear-gradient(90deg, #6c63ff, #7B47C5); /* cor do progresso */
+  background: linear-gradient(90deg, #6c63ff, #7B47C5);
   border-radius: 4px;
   transition: width 0.4s ease;
   position: absolute;
@@ -67,7 +67,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* centraliza verticalmente */
+  justify-content: center;
   z-index: 2;
 }
 
@@ -80,7 +80,7 @@
   background: #fff;
   display: flex;
   align-items: center;
-  justify-content: center; /* centraliza número */
+  justify-content: center;
   font-weight: bold;
   font-size: 16px;
   color: #555;
