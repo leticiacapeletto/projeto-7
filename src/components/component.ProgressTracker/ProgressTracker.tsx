@@ -46,17 +46,14 @@ export function ProgressTracker({
 
         {/* Círculos dinâmicos com base nas categorias */}
         {etapas.map((etapa, index) => (
-          <div key={index} className={styles.step}>
-            <div
-              className={`${styles.circle} ${
-                index < modulosConcluidos ? styles.filled : ""
-              }`}
-            >
-              {index + 1}
-            </div>
-            <span className={styles.label}>{etapa}</span>
-          </div>
-        ))}
+  <div key={index} className={styles.step}>
+    <div className={`${styles.circle} ${index < modulosConcluidos ? styles.filled : ""}`}>
+      {index + 1}
+    </div>
+    <span className={styles.label}>{etapa}</span>
+  </div>
+))}
+
       </div>
 
       <div className={styles.separador}></div>
