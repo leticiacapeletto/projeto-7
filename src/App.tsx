@@ -9,7 +9,6 @@ import { TaskCard } from "./components/component.TaskCard/TaskCard";
 
 export default function App() {
   const [tasks, setTasks] = useState<Task[]>([
-    // Módulos pré-preenchidos
     { id: crypto.randomUUID(), title: "Revisar estrutura HTML", category: "Fundamentos Web", completed: true },
     { id: crypto.randomUUID(), title: "Criar uma página simples", category: "Fundamentos Web", completed: true },
     { id: crypto.randomUUID(), title: "Instalar Node.js", category: "Backend Development", completed: true },
@@ -18,99 +17,69 @@ export default function App() {
 
   const [selected, setSelected] = useState<string | null>(null);
 
+  //  Adiciona tarefa
   function handleAddTask(title: string, category: string) {
     const newTask: Task = { id: crypto.randomUUID(), title, category, completed: false };
     setTasks((prev) => [...prev, newTask]);
   }
 
+  // Alterna concluída/não concluída
   function handleToggle(id: string) {
     setTasks((prev) =>
       prev.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task))
     );
   }
 
+  // Excluir
   function handleDelete(id: string) {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   }
 
-  const fundamentosWebTasks = tasks.filter(task => task.category === "Fundamentos Web");
-  const backendDevelopmentTasks = tasks.filter(task => task.category === "Backend Development");
-  const frontendFrameworkTasks = tasks.filter(task => task.category === "Frontend Framework");
-  const backendAvancadoTasks = tasks.filter(task => task.category === "Backend Avançado");
+  //  Editar
+  function handleEdit(id: string, novoTitulo: string) {
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, title: novoTitulo } : task))
+    );
+  }
 
-  const completedModulesCount = [
-    fundamentosWebTasks.length > 0 && fundamentosWebTasks.every(task => task.completed),
-    backendDevelopmentTasks.length > 0 && backendDevelopmentTasks.every(task => task.completed),
-    frontendFrameworkTasks.length > 0 && frontendFrameworkTasks.every(task => task.completed),
-    backendAvancadoTasks.length > 0 && backendAvancadoTasks.every(task => task.completed),
-  ].filter(Boolean).length;
+  //  Pega todas as categorias únicas
+  const categories = Array.from(new Set(tasks.map((task) => task.category)));
 
-  // Função para decidir se o título do módulo deve aparecer
-  const showTitle = (tasksInModule: Task[]) => {
-    return tasksInModule.every(task => task.completed);
-  };
+  // Conta quantos módulos (categorias) estão concluídos
+  const completedModulesCount = categories.filter((category) => {
+    const categoryTasks = tasks.filter((task) => task.category === category);
+    return categoryTasks.length > 0 && categoryTasks.every((task) => task.completed);
+  }).length;
 
   return (
     <>
       <Header />
-      <ProgressTracker total={4} concluidas={completedModulesCount} />
 
+      <ProgressTracker
+        totalTarefas={tasks.length}
+        concluidasTarefas={tasks.filter(t => t.completed).length}
+        modulosConcluidos={completedModulesCount}
+        etapas={categories}
+      />
+
+
+      {/* Cards de tarefas dinâmicos */}
       <div className={styles.taskCardsContainer}>
-        {fundamentosWebTasks.length > 0 && (
-          <TaskCard
-            title="Fundamentos Web"
-            tasks={fundamentosWebTasks}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-            selected={selected === "Fundamentos Web"}
-            onSelect={() =>
-              setSelected(selected === "Fundamentos Web" ? null : "Fundamentos Web")
-            }
-            showTitle={showTitle(fundamentosWebTasks)}
-          />
-        )}
-
-        {backendDevelopmentTasks.length > 0 && (
-          <TaskCard
-            title="Backend Development"
-            tasks={backendDevelopmentTasks}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-            selected={selected === "Backend Development"}
-            onSelect={() =>
-              setSelected(selected === "Backend Development" ? null : "Backend Development")
-            }
-            showTitle={showTitle(backendDevelopmentTasks)}
-          />
-        )}
-
-        {frontendFrameworkTasks.length > 0 && (
-          <TaskCard
-            title="Frontend Framework"
-            tasks={frontendFrameworkTasks}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-            selected={selected === "Frontend Framework"}
-            onSelect={() =>
-              setSelected(selected === "Frontend Framework" ? null : "Frontend Framework")
-            }
-            showTitle={showTitle(frontendFrameworkTasks)}
-          />
-        )}
-
-        {backendAvancadoTasks.length > 0 && (
-          <TaskCard
-            title="Backend Avançado"
-            tasks={backendAvancadoTasks}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-            selected={selected === "Backend Avançado"}
-            onSelect={() =>
-              setSelected(selected === "Backend Avançado" ? null : "Backend Avançado")
-            }
-            showTitle={showTitle(backendAvancadoTasks)}
-          />
-        )}
+        {categories.map((category) => {
+          const categoryTasks = tasks.filter((task) => task.category === category);
+          return (
+            <TaskCard
+              key={category}
+              title={category}
+              tasks={categoryTasks}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+              selected={selected === category}
+              onSelect={() => setSelected(selected === category ? null : category)}
+            />
+          );
+        })}
       </div>
 
       <div className={styles.App}>
@@ -118,7 +87,6 @@ export default function App() {
         <p>Adicione suas próprias tarefas de estudo</p>
 
         <TaskInput onAddTask={handleAddTask} />
-
         <TaskCounter tasks={tasks} />
       </div>
     </>
