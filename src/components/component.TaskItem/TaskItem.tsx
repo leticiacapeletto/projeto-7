@@ -21,9 +21,7 @@ export default function TaskItem({ task, onToggle, onDelete, onEdit }: Props) {
           onClick={(e) => {
             e.stopPropagation();
             const novoTitulo = prompt("Editar tarefa:", task.title);
-            if (novoTitulo && novoTitulo.trim() !== "") {
-              onEdit(task.id, novoTitulo);
-            }
+            onEdit(task.id, novoTitulo ?? "");
           }}
         >
           ✏️
