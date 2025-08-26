@@ -5,9 +5,10 @@ type TaskListProps = {
   tasks: Task[];
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
+  onEdit: (id: string, novoTitulo: string) => void; 
 };
 
-export function TaskList({ tasks, onToggle, onDelete }: TaskListProps) {
+export function TaskList({ tasks, onToggle, onDelete, onEdit }: TaskListProps) {
   return (
     <div>
       {tasks.map((task) => (
@@ -16,6 +17,7 @@ export function TaskList({ tasks, onToggle, onDelete }: TaskListProps) {
           task={task}
           onToggle={onToggle}
           onDelete={onDelete}
+          onEdit={onEdit} 
         />
       ))}
     </div>
