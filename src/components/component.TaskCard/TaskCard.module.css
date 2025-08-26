@@ -1,22 +1,22 @@
 .card {
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin: 10px;
-  flex: 1 1 calc(50% - 20px);
+  border-radius: 0.75rem; 
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.1); 
+  padding: 1rem; 
+  margin: 0.625rem; 
+  flex: 1 1 clamp(200px, 45%, 300px); 
   box-sizing: border-box;
   transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-0.1875rem); 
 }
 
 .title {
-  font-size: 18px;
+  font-size: clamp(1rem, 2vw, 1.125rem); 
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem; 
   color: #333;
   text-align: center;
 }
@@ -24,20 +24,20 @@
 /* Container da barra cinza */
 .progressBar {
   width: 100%;
-  height: 8px;
+  height: 0.5rem; 
   background: #eee;
-  border-radius: 4px;
+  border-radius: 0.25rem; 
   overflow: hidden;
-  margin: 10px 0;
+  margin: 0.625rem 0; 
   position: relative;
 }
 
-/* Barra colorida de progresso real */
+/* Barra colorida */
 .progressFill {
   height: 100%;
   background: linear-gradient(90deg, #6c63ff, #7B47C5);
   width: 0;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   transition: width 0.4s ease, background 0.3s ease;
 }
 
@@ -48,9 +48,9 @@
 .checkbox {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 15px;
-  font-size: 14px;
+  gap: 0.5rem; 
+  margin-top: 0.9375rem; 
+  font-size: clamp(0.8rem, 1.5vw, 0.875rem); 
   color: #333;
 }
 
@@ -58,28 +58,28 @@
   accent-color: #6c63ff;
 }
 
-/* NOVO: container dos items com rolagem */
+/* Container dos itens com rolagem */
 .taskCardBody {
-  max-height: 210px;
+  max-height: 13rem; 
   overflow-y: auto;
-  padding-right: 8px;
-  margin-top: 10px;
+  padding-right: 0.5rem; 
+  margin-top: 0.625rem; 
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem; 
 }
 
-/* scroll mais suave */
+/* Scroll mais suave */
 .taskCardBody::-webkit-scrollbar {
-  width: 6px;
+  width: 0.375rem; 
 }
 
 .taskCardBody::-webkit-scrollbar-thumb {
   background: #7B47C5;
-  border-radius: 3px;
+  border-radius: 0.1875rem; 
 }
 
 .taskCardBody::-webkit-scrollbar-track {
   background: #f0f0f0;
-  border-radius: 3px;
+  border-radius: 0.1875rem; 
 }

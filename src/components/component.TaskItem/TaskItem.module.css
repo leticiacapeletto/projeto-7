@@ -3,10 +3,12 @@
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  padding: 1rem 1.5rem;
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 1.5rem);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   margin-bottom: 1rem;
   border-radius: 6px;
+  flex-wrap: wrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .container:hover {
@@ -18,19 +20,22 @@
 .completed {
   text-decoration: line-through;
   color: #888;
+  word-break: break-word; 
 }
-
 
 .actions {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
+  flex-wrap: wrap; 
 }
 
+/* Botão Editar */
 .buttonEditar {
   background: #007bff;
   color: white;
   font-weight: 600;
-  padding: 0.6rem 0.8rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.6rem, 2vw, 0.8rem);
   border: none;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -38,7 +43,7 @@
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .buttonEditar:hover {
@@ -51,11 +56,13 @@
   transform: scale(0.96);
 }
 
+/* Botão Excluir */
 .buttonExcluir {
   background: #7517b4d7;
   color: white;
   font-weight: 600;
-  padding: 0.6rem 0.8rem;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.6rem, 2vw, 0.8rem);
   border: none;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -63,7 +70,7 @@
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .buttonExcluir::before {
@@ -90,9 +97,4 @@
 .buttonExcluir:active {
   transform: scale(0.96);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.buttonExcluir:focus-visible {
-  outline: 2px solid var(--accent);
-  box-shadow: 0 0 0 3px rgba(212, 99, 6, 0.3);
 }

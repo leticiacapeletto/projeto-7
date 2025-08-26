@@ -4,29 +4,25 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #7B47C5;
 }
 
-
-
 .App {
   background: white;
-  margin: 30px auto;
-  padding: 20px;
+  margin: 2rem auto;
+  padding: clamp(1rem, 2vw, 2rem);
   border-radius: 10px;
   box-shadow: 0 0 8px rgba(71, 1, 85, 0.479);
   display: flex;
   flex-direction: column;
-  max-width: 70%;
-
+  max-width: 95%; 
 }
 
 .tituloTarefa {
-  font-size: 1.8rem;
-  margin-bottom: 6px;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 0.5rem;
   color: #1f1d1dd7;
   text-align: center;
 }
@@ -36,7 +32,6 @@ p {
   text-align: center;
 }
 
-
 .separador {
   width: 100%;
   height: 1px;
@@ -44,13 +39,13 @@ p {
   margin: 1.5rem 0;
 }
 
-
 .taskCardsContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin: 30px auto;
-  max-width: 70%;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 100%;
 }
 
 .errorModal {
@@ -73,13 +68,10 @@ p {
     opacity: 0;
     transform: translateX(-50%) translateY(-10px);
   }
-
-  10%,
-  90% {
+  10%, 90% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-
   100% {
     opacity: 0;
     transform: translateX(-50%) translateY(-10px);
