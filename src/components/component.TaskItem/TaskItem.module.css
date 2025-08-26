@@ -1,18 +1,54 @@
-.container{
-     display: flex;
+.container {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white; 
-  padding: 1rem 1.5rem; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
-  margin-bottom: 1rem; 
+  background-color: white;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
   border-radius: 6px;
 }
 
 .container:hover {
- background: rgba(233, 231, 231, 0.678);
+  background: rgba(233, 231, 231, 0.678);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.buttonEditar {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 0.8rem;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.buttonEditar:hover {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.buttonEditar:active {
+  transform: scale(0.96);
 }
 
 .buttonExcluir {
@@ -29,7 +65,6 @@
   overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
-
 
 .buttonExcluir::before {
   content: "";

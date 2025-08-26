@@ -7,12 +7,13 @@ interface TaskCardProps {
   tasks: Task[];
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
+  onEdit: (id: string, novoTitulo: string) => void;
   selected: boolean;
   onSelect: () => void;
-  showTitle?: boolean; // adiciona a prop opcional
+  showTitle?: boolean;
 }
 
-export function TaskCard({ title, tasks, onToggle, onDelete, selected, onSelect, showTitle = true }: TaskCardProps) {
+export function TaskCard({ title, tasks, onToggle, onDelete, onEdit, selected, onSelect, showTitle = true }: TaskCardProps) {
   const completedCount = tasks.filter(task => task.completed).length;
   const progress = tasks.length > 0 ? (completedCount / tasks.length) * 100 : 0;
 
@@ -21,10 +22,8 @@ export function TaskCard({ title, tasks, onToggle, onDelete, selected, onSelect,
       className={`${styles.card} ${selected ? styles.selected : ""}`}
       onClick={onSelect}
     >
-      {/* Renderiza o título apenas se showTitle for true */}
       {showTitle && <h3 className={styles.title}>{title}</h3>}
 
-      {/* Barra de progresso */}
       <div className={styles.progressBar}>
         <div
           className={styles.progressFill}
@@ -32,17 +31,18 @@ export function TaskCard({ title, tasks, onToggle, onDelete, selected, onSelect,
         ></div>
       </div>
 
-      {/* Lista de tarefas */}
-      <div className={styles.taskList}>
-        {tasks.map((task) => (
+      <div className={styles.taskCardBody}>
+        {tasks.map(task => (
           <TaskItem
             key={task.id}
             task={task}
             onToggle={onToggle}
             onDelete={onDelete}
+            onEdit={onEdit}
           />
         ))}
       </div>
+
     </div>
   );
 }
