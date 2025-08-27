@@ -34,6 +34,11 @@ O app oferece **adição, exclusão e acompanhamento do progresso** de cada tare
 ---
 ## 🎥 Demonstração
 
+
+
+https://github.com/user-attachments/assets/51adf6a8-1305-45de-aeeb-cb30302a4155
+
+
 ## 📦 Estrutura do Projeto
 
 ```
