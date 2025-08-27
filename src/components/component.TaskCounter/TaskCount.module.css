@@ -1,8 +1,8 @@
 .container {
   display: flex;
   justify-content: center;
-  gap: clamp(1rem, 8vw, 12rem); 
-  flex-wrap: wrap; 
+  gap: clamp(1rem, 8vw, 12rem);
+  flex-wrap: wrap;
   margin: 1rem 0;
 }
 
@@ -10,19 +10,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 
 .number {
   color: #3498db;
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem); 
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   font-weight: bold;
 }
 
 .label {
   margin-top: 0.3rem;
-  font-size: clamp(0.875rem, 2vw, 1rem); 
+  font-size: clamp(0.875rem, 2vw, 1rem);
   font-weight: normal;
   color: #333;
-  text-align: center; 
+  text-align: center;
 }

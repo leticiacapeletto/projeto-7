@@ -1,23 +1,41 @@
 .header {
-  margin: 2rem auto; 
-  padding: 1.5rem; 
+  margin: 2rem auto;
+  padding: 1.5rem 1rem;
   border-radius: 10px;
   text-align: center;
-  max-width: 95%;
+  max-width: 70%;
   color: white;
 }
 
 .header h1 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem); 
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   margin-bottom: 0.5rem;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  font-weight: 700;
 }
 
 .header p {
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem); 
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   font-weight: 500;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  margin: 0; 
-  line-height: 1.4; 
+  margin: 0;
+  line-height: 1.5;
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Responsividade --- */
+@media screen and (max-width: 768px) {
+  .header {
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
+
+  .header p {
+    font-size: clamp(0.85rem, 3vw, 1rem);
+  }
 }

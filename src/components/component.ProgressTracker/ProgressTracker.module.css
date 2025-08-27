@@ -1,11 +1,12 @@
 .trackerContainer {
   background: white;
   margin: 2rem auto;
-  padding: 1.25rem; 
-  border-radius: 0.625rem; 
+  padding: 1.25rem;
+  border-radius: 0.625rem;
   box-shadow: 0 0 0.5rem rgba(71, 1, 85, 0.48);
   text-align: center;
-  max-width: 90%;
+  max-width: 80%;
+  min-width: 60%;
   font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
@@ -31,7 +32,6 @@
   margin: 2rem 0 1rem;
 }
 
-
 .line {
   height: 8px;
   background: #eee;
@@ -44,7 +44,6 @@
   z-index: 0;
 }
 
-/* Barra colorida preenchendo */
 .lineFill {
   height: 8px;
   background: linear-gradient(90deg, #6c63ff, #7B47C5);
@@ -61,7 +60,6 @@
   background: linear-gradient(90deg, #7B47C5, #6c63ff);
 }
 
-/* Cada etapa com o círculo centralizado */
 .step {
   position: relative;
   display: flex;
@@ -69,9 +67,10 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  max-width: 80%;
+  min-width: 60px;
 }
 
-/* Círculo com número no centro */
 .circle {
   width: 40px;
   height: 40px;
@@ -93,7 +92,6 @@
   border-color: #6c63ff;
   color: #6c63ff;
 }
-
 
 .label {
   font-size: 12px;
@@ -136,4 +134,75 @@
 .counterLabel {
   font-size: 12px;
   color: #333;
+}
+
+
+/* --- Responsividade --- */
+@media screen and (max-width: 1024px) {
+  .trackerContainer {
+    min-width: 86%;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .trackerContainer {
+    min-width: 95%;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .trackerContainer {
+    min-width: 95%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .trackerContainer {
+    min-width: 95%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .trackerContainer {
+    min-width: 90%;
+  }
+
+  .roadmap {
+    max-width: 100%;
+  }
+
+  .circle {
+    margin-bottom: 18px;
+  }
+
+}
+
+
+@media screen and (max-width: 570px) {
+  .circle {
+    margin-bottom: 4px;
+
+  }
+
+  .trackerContainer {
+    min-width: 94%;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 400px) {
+  .label {
+    font-size: 10px;
+  }
+
+  .sublabel {
+    font-size: 8px;
+  }
+
+  .trackerContainer {
+    min-width: 90%;
+  }
+
 }
